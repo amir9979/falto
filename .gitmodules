@@ -1,7 +1,7 @@
 [submodule "falo"]
 	path = falo
-	url = git@github.com:dkarv/falo.git
+	url = https://github.com/dkarv/falo.git
 [submodule "jdcallgraph"]
 	path = jdcallgraph
-	url = git@github.com:dkarv/jdcallgraph.git
+	url = https://github.com/dkarv/jdcallgraph.git
 	branch = combined-graphs
