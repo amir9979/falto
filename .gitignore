@@ -1,0 +1,6 @@
+result/
+results/
+/cache
+/spectra
+data/*
+!data/info

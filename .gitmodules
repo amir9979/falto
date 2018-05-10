@@ -1,0 +1,6 @@
+[submodule "jdcallgraph"]
+	path = jdcallgraph
+	url = git@github.com:dkarv/jdcallgraph.git
+[submodule "falo"]
+	path = falo
+	url = git@github.com:dkarv/falo.git
