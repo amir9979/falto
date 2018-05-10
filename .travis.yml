@@ -1,2 +1,5 @@
 install:
   - ./init.sh -install
+
+script:
+  - run/this.sh Lang 1
