@@ -1,2 +1,2 @@
 install:
-  - ./init.sh
+  - ./init.sh -install
