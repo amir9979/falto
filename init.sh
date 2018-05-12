@@ -7,7 +7,7 @@ if [[ $1 == -install ]]; then
 fi
 
 echoerr() { echo "$@" 1>&2; }
-apt() { 
+apt() {
   if [[ $inst -eq "1" ]]; then
     apt install "$@"
   else
@@ -15,7 +15,7 @@ apt() {
   fi
 }
 
-apt() { 
+pip() {
   if [[ $inst -eq "1" ]]; then
     pip install "$@"
   else
