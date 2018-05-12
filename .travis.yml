@@ -1,4 +1,5 @@
 language: 'shell'
+sudo: yes
 
 install:
   - ./init.sh -install
