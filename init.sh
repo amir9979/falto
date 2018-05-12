@@ -61,7 +61,7 @@ if ! $(python -c 'import causality; import sklearn') ; then
 fi
 
 
-if [ "$error" -eq "1" && "$inst" -eq "0" ]; then
+if [ "$error" -eq "1" ] && [ "$inst" -eq "0" ]; then
    echoerr "Please install all dependencies and run again. Calling this script with -install flag will install everything on systems with apt-get."
    exit 1;
 fi
