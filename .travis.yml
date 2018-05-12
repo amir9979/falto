@@ -1,3 +1,5 @@
+language: 'shell'
+
 install:
   - ./init.sh -install
 
