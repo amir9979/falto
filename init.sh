@@ -28,7 +28,7 @@ apt=1
 
 if ! [ -x "$(command -v javac)" ]; then
   echoerr "Missing a JDK"
-  aptinstall "openjdk-8"
+  aptinstall "openjdk-8-jdk"
   error=1
 fi
 
