@@ -9,7 +9,7 @@ fi
 echoerr() { echo "$@" 1>&2; }
 aptinstall() {
   if [[ $inst -eq "1" ]]; then
-    apt-get install "$@"
+    sudo apt-get install "$@"
   else
     echoerr "Please install $@"
   fi
