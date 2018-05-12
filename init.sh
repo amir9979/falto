@@ -7,15 +7,15 @@ if [[ $1 == -install ]]; then
 fi
 
 echoerr() { echo "$@" 1>&2; }
-apt() {
+aptinstall() {
   if [[ $inst -eq "1" ]]; then
-    apt install "$@"
+    apt-get install "$@"
   else
     echoerr "Please install $@"
   fi
 }
 
-pip() {
+pipinstall() {
   if [[ $inst -eq "1" ]]; then
     pip install "$@"
   else
@@ -27,36 +27,36 @@ pip() {
 apt=1
 
 if ! [ -x "$(command -v javac)" ]; then
-  echoerr "Please install a JDK"
-  apt "openjdk-8"
+  echoerr "Missing a JDK"
+  aptinstall "openjdk-8"
   error=1
 fi
 
 if ! [ -x "$(command -v mvn)" ]; then
-  echoerr "Please install maven"
-  apt "maven"
+  echoerr "Maven missing"
+  aptinstall "maven"
   error=1
 fi
 
 if ! [ -x "$(command -v dot)" ]; then
   echoerr "Please install graphviz"
-  apt "graphviz"
+  aptinstall "graphviz"
   error=1
 fi
 
 if ! $(perl -e 'use DBI;'); then
   echoerr "Please install libdbi-perl"
-  apt "libdbi-perl"
+  aptinstall "libdbi-perl"
   error=1
 fi
 
 if ! $(python -c 'import causality; import sklearn') ; then
   echoerr "Please install python, pip, gfortran, python-dev, liblapack-dev"
   echoerr "Also install the python modules numpy, causality, sklearn"
-  apt "python-pip gfortran python-dev liblapack-dev"
-  pip "numpy"
-  pip "causality"
-  pip "sklearn"
+  aptinstall "python-pip gfortran python-dev liblapack-dev"
+  pipinstall "numpy"
+  pipinstall "causality"
+  pipinstall "sklearn"
   error=1
 fi
 
