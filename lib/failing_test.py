@@ -11,7 +11,7 @@ def get_with_lines(workdir, proj, bug):
 
 
 def get_raw(workdir, proj, bug):
-  output = cmd("{0}/data/defects4j/framework/bin/defects4j info -p {1} -b {2}".format(workdir, proj, bug))
+  output = cmd("{0}/defects4j/framework/bin/defects4j info -p {1} -b {2}".format(workdir, proj, bug))
   tests = re.findall("""Root cause in triggering tests:
 (.*)
 --------------------------------------------------------------------------------
