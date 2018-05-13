@@ -11,6 +11,3 @@ install:
 
 script:
   - run/this.sh Lang 1
-
-after_failure:
-  - find
