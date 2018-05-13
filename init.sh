@@ -86,7 +86,7 @@ file='defects4j/framework/projects/defects4j.build.xml'
 sed -i "s@$match@$insert@" $file
 
 # adjust output dir of jdcallgraph
-sed -i "s@outDir: ./result@outDir: '$SCRIPTPATH'/result"
+sed -i "s@outDir: ./result@outDir: $SCRIPTPATH/result@" jdcallgraph/examples/falo.ini
 
 
 cd defects4j
