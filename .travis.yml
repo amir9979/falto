@@ -3,7 +3,7 @@ language: shell
 sudo: yes
 
 before_install:
-  - sudo add-apt-repository ppa:openjdk-r/ppa
+  - sudo add-apt-repository ppa:openjdk-r/ppa -y
   - sudo apt-get update
 
 install:
