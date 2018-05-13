@@ -5,3 +5,6 @@
 	path = jdcallgraph
 	url = https://github.com/dkarv/jdcallgraph.git
 	branch = combined-graphs
+[submodule "defects4j"]
+	path = defects4j
+	url = https://github.com/rjust/defects4j

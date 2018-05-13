@@ -63,20 +63,24 @@ if ! $(python -c 'import causality; import sklearn') ; then
   error=1
 fi
 
-
 if [ "$error" -eq "1" ] && [ "$inst" -eq "0" ]; then
    echoerr "Please install all dependencies and run again. Calling this script with -install flag will install everything on systems with apt-get."
    exit 1;
 fi
+
 
 git submodule update --init --recursive
 mvn -f falo/falo/pom.xml package -DskipTests
 mvn -f jdcallgraph/jdcallgraph/pom.xml package -DskipTests -Dcheckstyle.skip=true
 
 
-git clone https://github.com/dkarv/defects4j data/defects4j
-cd data/defects4j
+cd defects4j
 ./init.sh
+cd ..
 
-echo ""
-echo "Change the folder in data/defects4j/framework/projects/defects4j.build.xml now"
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+match='<junit printsummary="yes" haltonfailure="no" haltonerror="no" fork="no" showOutput="true">'
+insert='<junit printsummary="yes" haltonfailure="no" haltonerror="no" fork="yes" forkmode="once" showOutput="true">\n            <jvmarg value="-javaagent:'$SCRIPTPATH'/jdcallgraph/jdcallgraph/target/jdcallgraph-0.1-agent.jar='$SCRIPTPATH'/jdcallgraph/examples/falo.ini" />'
+file='defects4j/framework/projects/defects4j.build.xml'
+
+sed -i "s@$match@$insert@" $file
