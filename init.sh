@@ -74,13 +74,18 @@ mvn -f falo/falo/pom.xml package -DskipTests
 mvn -f jdcallgraph/jdcallgraph/pom.xml package -DskipTests -Dcheckstyle.skip=true
 
 
-cd defects4j
-./init.sh
-cd ..
+# Prepare defects4j
+# enable debug mode
+sed -i "s@our $DEBUG = 0;@our $DEBUG = 1;@" defects4j/framework/core/Constants.pm
 
+# add jdcallgraph as instrumentation
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 match='<junit printsummary="yes" haltonfailure="no" haltonerror="no" fork="no" showOutput="true">'
 insert='<junit printsummary="yes" haltonfailure="no" haltonerror="no" fork="yes" forkmode="once" showOutput="true">\n            <jvmarg value="-javaagent:'$SCRIPTPATH'/jdcallgraph/jdcallgraph/target/jdcallgraph-0.1-agent.jar='$SCRIPTPATH'/jdcallgraph/examples/falo.ini" />'
 file='defects4j/framework/projects/defects4j.build.xml'
-
 sed -i "s@$match@$insert@" $file
+
+
+cd defects4j
+./init.sh
+cd ..
