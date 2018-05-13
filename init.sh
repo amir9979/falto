@@ -17,7 +17,7 @@ aptinstall() {
 
 pipinstall() {
   if [[ $inst -eq "1" ]]; then
-    pip install "$@"
+    sudo pip install "$@"
   else
     echoerr "Please do pip install $@"
   fi
@@ -53,7 +53,10 @@ fi
 if ! $(python -c 'import causality; import sklearn') ; then
   echoerr "Please install python, pip, gfortran, python-dev, liblapack-dev"
   echoerr "Also install the python modules numpy, causality, sklearn"
-  aptinstall "python-pip gfortran python-dev liblapack-dev"
+  aptinstall "python-dev"
+  aptinstall "python-pip"
+  aptinstall "gfortran"
+  aptinstall "liblapack-dev"
   pipinstall "numpy"
   pipinstall "causality"
   pipinstall "sklearn"
