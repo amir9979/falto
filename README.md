@@ -4,6 +4,8 @@ FAult Localization TOols
 
 A bunch of tools for fault localization. This is the main repo, it contains the scoring pipeline and scripts to run experiments on bugs from Defects4J.
 
+https://github.com/dkarv/lang-26-data contains the files our tools computed for Lang-26.
+
 ## Setup
 
 1. Clone this repository
